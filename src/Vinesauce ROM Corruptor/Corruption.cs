@@ -49,7 +49,7 @@ namespace Vinesauce_ROM_Corruptor
             List<long[]> ProtectedRegions = new List<long[]>();
 
             // Delimeter for text sections.
-            char[] Delimeter = new char[1] { '|' };
+            char[] Delimeter = { '|' };
 
             // Do text replacement if desired.
             if (TextReplacementEnable)
@@ -284,7 +284,7 @@ namespace Vinesauce_ROM_Corruptor
                                 }
 
                                 // Protect the inserted text.
-                                ProtectedRegions.Add(new long[2] { j, j + k });
+                                ProtectedRegions.Add(new long[] { j, j + k });
                             }
 
                             // Move ahead to the correct location in the ROM.
@@ -412,7 +412,7 @@ namespace Vinesauce_ROM_Corruptor
                                     if (!Protected)
                                     {
                                         ROM[j + k] = ColorsReplaceWithBytes[i];
-                                        ProtectedRegions.Add(new long[2] { j + k, j + k });
+                                        ProtectedRegions.Add(new long[] { j + k, j + k });
                                     }
                                 }
                             }
