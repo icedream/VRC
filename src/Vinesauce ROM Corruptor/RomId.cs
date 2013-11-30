@@ -19,11 +19,9 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Vinesauce_ROM_Corruptor
@@ -111,6 +109,5 @@ namespace Vinesauce_ROM_Corruptor
                 HashStringBase64 = Convert.ToBase64String(Hash);
             }
         }
-
     }
 }

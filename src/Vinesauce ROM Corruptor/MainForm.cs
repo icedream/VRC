@@ -19,11 +19,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
@@ -65,11 +60,6 @@ namespace Vinesauce_ROM_Corruptor
         }
 
         static private Process Emulator = null;
-
-        static private List<byte> NESCPUJamProtection_Avoid = new List<byte>() { 0x48, 0x08, 0x68, 0x28, 0x78, 0x00, 0x02, 0x12, 0x22, 0x32, 0x42, 0x52, 0x62, 0x72, 0x92, 0xB2, 0xD2, 0xF2 };
-        static private List<byte> NESCPUJamProtection_Protect_1 = new List<byte>() { 0x48, 0x08, 0x68, 0x28, 0x78, 0x40, 0x60, 0x00, 0x90, 0xB0, 0xF0, 0x30, 0xD0, 0x10, 0x50, 0x70, 0x4C, 0x6C, 0x20 };
-        static private List<byte> NESCPUJamProtection_Protect_2 = new List<byte>() { 0x90, 0xB0, 0xF0, 0x30, 0xD0, 0x10, 0x50, 0x70, 0x4C, 0x6C, 0x20 };
-        static private List<byte> NESCPUJamProtection_Protect_3 = new List<byte>() { 0x4C, 0x6C, 0x20 };
 
         static public Keys Hotkey = Keys.Space;
         static public HotkeyActions HotkeyAction = HotkeyActions.AddStart;
@@ -797,7 +787,7 @@ namespace Vinesauce_ROM_Corruptor
                 try
                 {
                     // Create a TinyURL.
-                    System.Net.WebClient wc = new System.Net.WebClient();
+                    WebClient wc = new WebClient();
                     UriBuilder ub = new UriBuilder();
                     ub.Host = "tinyurl.com";
                     ub.Path = "/api-create.php";
@@ -813,7 +803,7 @@ namespace Vinesauce_ROM_Corruptor
                 // Handle the response.
                 if (response.Contains("http://tinyurl.com/"))
                 {
-                    System.Windows.Forms.Clipboard.SetDataObject(response, true);
+                    Clipboard.SetDataObject(response, true);
                     MessageBox.Show("TinyURL:\n\n" + response + "\n\nCopied to clipboard.", "Saved to TinyURL", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -1390,7 +1380,7 @@ namespace Vinesauce_ROM_Corruptor
             HotkeyForm form = new HotkeyForm();
             form.StartPosition = FormStartPosition.CenterParent;
             form.ShowDialog();
-            while (form.Visible == true)
+            while (form.Visible)
                 this.Enabled = false;
         }
 
@@ -1552,7 +1542,7 @@ namespace Vinesauce_ROM_Corruptor
             QueueForm form = new QueueForm(this);
             form.StartPosition = FormStartPosition.CenterParent;
             form.ShowDialog();
-            while (form.Visible == true)
+            while (form.Visible)
                 this.Enabled = false;
         }
 
