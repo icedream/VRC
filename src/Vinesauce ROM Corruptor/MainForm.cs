@@ -188,7 +188,7 @@ namespace Vinesauce_ROM_Corruptor
 
             if (fDialog.ShowDialog() == DialogResult.OK)
             {
-                textBox_EmulatorToRun.Text = fDialog.FileName.ToString();
+                textBox_EmulatorToRun.Text = fDialog.FileName;
             }
             textBox_EmulatorToRun.SelectionStart = textBox_EmulatorToRun.Text.Length;
             textBox_EmulatorToRun.ScrollToCaret();
@@ -985,27 +985,27 @@ namespace Vinesauce_ROM_Corruptor
             StringBuilder sb = new StringBuilder();
 
             // General settings.
-            sb.AppendLine("checkBox_EnableNESCPUJamProtection.Checked=" + checkBox_EnableNESCPUJamProtection.Checked.ToString());
+            sb.AppendLine("checkBox_EnableNESCPUJamProtection.Checked=" + checkBox_EnableNESCPUJamProtection.Checked);
 
             // Text replacement settings.
-            sb.AppendLine("checkBox_TextReplacementEnable.Checked=" + checkBox_TextReplacementEnable.Checked.ToString());
-            sb.AppendLine("checkBox_TextUseByteCorruptionRange.Checked=" + checkBox_TextUseByteCorruptionRange.Checked.ToString());
+            sb.AppendLine("checkBox_TextReplacementEnable.Checked=" + checkBox_TextReplacementEnable.Checked);
+            sb.AppendLine("checkBox_TextUseByteCorruptionRange.Checked=" + checkBox_TextUseByteCorruptionRange.Checked);
             sb.AppendLine("textBox_AnchorWords.Text=" + textBox_AnchorWords.Text);
             sb.AppendLine("textBox_TextToReplace.Text=" + textBox_TextToReplace.Text);
             sb.AppendLine("textBox_ReplaceWith.Text=" + textBox_ReplaceWith.Text);
 
             // Color replacement settings.
-            sb.AppendLine("checkBox_ColorReplacementEnable.Checked=" + checkBox_ColorReplacementEnable.Checked.ToString());
-            sb.AppendLine("checkBox_ColorUseByteCorruptionRange.Checked=" + checkBox_ColorUseByteCorruptionRange.Checked.ToString());
+            sb.AppendLine("checkBox_ColorReplacementEnable.Checked=" + checkBox_ColorReplacementEnable.Checked);
+            sb.AppendLine("checkBox_ColorUseByteCorruptionRange.Checked=" + checkBox_ColorUseByteCorruptionRange.Checked);
             sb.AppendLine("textBox_ColorsToReplace.Text=" + textBox_ColorsToReplace.Text);
             sb.AppendLine("textBox_ReplaceWithColors.Text=" + textBox_ReplaceWithColors.Text);
 
             // Byte corruption settings.
-            sb.AppendLine("checkBox_ByteCorruptionEnable.Checked=" + checkBox_ByteCorruptionEnable.Checked.ToString());
-            sb.AppendLine("checkBox_AutoEnd.Checked=" + checkBox_AutoEnd.Checked.ToString());
-            sb.AppendLine("radioButton_AddXToByte.Checked=" + radioButton_AddXToByte.Checked.ToString());
-            sb.AppendLine("radioButton_ShiftRightXBytes.Checked=" + radioButton_ShiftRightXBytes.Checked.ToString());
-            sb.AppendLine("radioButton_ReplaceByteXwithY.Checked=" + radioButton_ReplaceByteXwithY.Checked.ToString());
+            sb.AppendLine("checkBox_ByteCorruptionEnable.Checked=" + checkBox_ByteCorruptionEnable.Checked);
+            sb.AppendLine("checkBox_AutoEnd.Checked=" + checkBox_AutoEnd.Checked);
+            sb.AppendLine("radioButton_AddXToByte.Checked=" + radioButton_AddXToByte.Checked);
+            sb.AppendLine("radioButton_ShiftRightXBytes.Checked=" + radioButton_ShiftRightXBytes.Checked);
+            sb.AppendLine("radioButton_ReplaceByteXwithY.Checked=" + radioButton_ReplaceByteXwithY.Checked);
             sb.AppendLine("textBox_StartByte.Text=" + textBox_StartByte.Text);
             sb.AppendLine("textBox_EndByte.Text=" + textBox_EndByte.Text);
             sb.AppendLine("textBox_Increment.Text=" + textBox_Increment.Text);
