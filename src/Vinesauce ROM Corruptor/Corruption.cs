@@ -20,7 +20,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -584,8 +583,6 @@ namespace Vinesauce_ROM_Corruptor
                         {
                             Random random = new Random((int)DateTime.Now.Ticks);
                             int res = random.Next(1, 100);
-                            Debug.WriteLine("Original: " + ROM[i]);
-                            
 
                             if (res >= 1 && res <= 10)
                             {
@@ -627,7 +624,6 @@ namespace Vinesauce_ROM_Corruptor
                             {
                                 ROM[i] = (byte)(~ROM[i]);
                             }
-                            Debug.WriteLine("Random: " + ROM[i]);
                         }
                     }
                 }
