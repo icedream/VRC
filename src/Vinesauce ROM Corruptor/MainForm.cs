@@ -406,19 +406,9 @@ namespace Vinesauce_ROM_Corruptor
         {
             if (SelectedROM != null && checkBox_AutoEnd.Checked)
             {
-                long StartByte;
-                try
-                {
-                    StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
-                }
-                catch
-                {
-                    MessageBox.Show("Invalid start byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    checkBox_AutoEnd.Checked = false;
-                    return;
-                }
-
+                long StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
                 long MaxByte = SelectedROM.FileLength - 1;
+
                 if (StartByte > MaxByte)
                 {
                     StartByte = MaxByte;
@@ -446,40 +436,12 @@ namespace Vinesauce_ROM_Corruptor
         private void button_StartByteUp_Click(object sender, EventArgs e)
         {
             button_Run.Focus();
-            long StartByte;
-            try
-            {
-                StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid start byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            long EndByte;
-            try
-            {
-                EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid end byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            long StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
+            long EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
+            long Increment = Convert.ToInt64(textBox_Increment.Text, 16);
 
-            long Increment;
-            try
-            {
-                Increment = Convert.ToInt64(textBox_Increment.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid increment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            StartByte = StartByte + Increment;
+            StartByte += Increment;
             if (StartByte > EndByte)
             {
                 StartByte = EndByte;
@@ -490,40 +452,12 @@ namespace Vinesauce_ROM_Corruptor
         private void button_StartByteDown_Click(object sender, EventArgs e)
         {
             button_Run.Focus();
-            long StartByte;
-            try
-            {
-                StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid start byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            long StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
+            long EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
+            long Increment = Convert.ToInt64(textBox_Increment.Text, 16);
+            
 
-            long EndByte;
-            try
-            {
-                EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid end byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            long Increment;
-            try
-            {
-                Increment = Convert.ToInt64(textBox_Increment.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid increment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            StartByte = StartByte - Increment;
+            StartByte -= Increment;
             if (StartByte < 0)
             {
                 StartByte = 0;
@@ -534,80 +468,22 @@ namespace Vinesauce_ROM_Corruptor
         private void button_EndByteUp_Click(object sender, EventArgs e)
         {
             button_Run.Focus();
-            long StartByte;
-            try
-            {
-                StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid start byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            long StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
+            long EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
+            long Increment = Convert.ToInt64(textBox_Increment.Text, 16);
 
-            long EndByte;
-            try
-            {
-                EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid end byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            long Increment;
-            try
-            {
-                Increment = Convert.ToInt64(textBox_Increment.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid increment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            EndByte = EndByte + Increment;
+            EndByte += Increment;
             textBox_EndByte.Text = EndByte.ToString("X");
         }
 
         private void button_EndByteDown_Click(object sender, EventArgs e)
         {
             button_Run.Focus();
-            long StartByte;
-            try
-            {
-                StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid start byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            long StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
+            long EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
+            long Increment = Convert.ToInt64(textBox_Increment.Text, 16);
 
-            long EndByte;
-            try
-            {
-                EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid end byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            long Increment;
-            try
-            {
-                Increment = Convert.ToInt64(textBox_Increment.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid increment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            EndByte = EndByte - Increment;
+            EndByte -= Increment;
             if (EndByte < StartByte)
             {
                 EndByte = StartByte;
@@ -618,41 +494,12 @@ namespace Vinesauce_ROM_Corruptor
         private void button_RangeUp_Click(object sender, EventArgs e)
         {
             button_Run.Focus();
-            long StartByte;
-            try
-            {
-                StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid start byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            long StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
+            long EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
+            long Increment = Convert.ToInt64(textBox_Increment.Text, 16);
 
-            long EndByte;
-            try
-            {
-                EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid end byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            long Increment;
-            try
-            {
-                Increment = Convert.ToInt64(textBox_Increment.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid increment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            StartByte = StartByte + Increment;
-            EndByte = EndByte + Increment;
+            StartByte += Increment;
+            EndByte   += Increment;
             textBox_StartByte.Text = StartByte.ToString("X");
             textBox_EndByte.Text = EndByte.ToString("X");
         }
@@ -660,41 +507,12 @@ namespace Vinesauce_ROM_Corruptor
         private void button_RangeDown_Click(object sender, EventArgs e)
         {
             button_Run.Focus();
-            long StartByte;
-            try
-            {
-                StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid start byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            long EndByte;
-            try
-            {
-                EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid end byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            long Increment;
-            try
-            {
-                Increment = Convert.ToInt64(textBox_Increment.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid increment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            long StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
+            long EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
+            long Increment = Convert.ToInt64(textBox_Increment.Text, 16);
 
             long Difference = EndByte - StartByte;
-            StartByte = StartByte - Increment;
+            StartByte -= Increment;
             if (StartByte < 0)
             {
                 StartByte = 0;
@@ -702,7 +520,7 @@ namespace Vinesauce_ROM_Corruptor
             }
             else
             {
-                EndByte = EndByte - Increment;
+                EndByte -= Increment;
             }
             textBox_StartByte.Text = StartByte.ToString("X");
             textBox_EndByte.Text = EndByte.ToString("X");
@@ -1018,12 +836,10 @@ namespace Vinesauce_ROM_Corruptor
         private string QueueSettingsToString()
         {
             StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("checkBox_QueueEnable.Checked=" + checkBox_QueueEnable.Checked.ToString());
+            sb.AppendLine("checkBox_QueueEnable.Checked=" + checkBox_QueueEnable.Checked);
 
             foreach (string[] Entry in QueueForm.CorruptionQueue)
             {
-
                 sb.AppendLine("Queue_Entry_Start");
                 sb.AppendLine("Identifier=" + Entry[0]);
                 sb.Append(Entry[1]);
@@ -1546,87 +1362,21 @@ namespace Vinesauce_ROM_Corruptor
         private byte[] Corrupt(byte[] ROM)
         {
             // Read in all of the text boxes.
-            long StartByte;
-            try
-            {
-                StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid start byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            long StartByte = Convert.ToInt64(textBox_StartByte.Text, 16);
+            long EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
 
-            long EndByte;
-            try
-            {
-                EndByte = Convert.ToInt64(textBox_EndByte.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid end byte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-
-            uint EveryNthByte;
-            try
-            {
-                EveryNthByte = Convert.ToUInt32(textBox_EveryNBytes.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid byte corruption interval.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            uint EveryNthByte = Convert.ToUInt32(textBox_EveryNBytes.Text);
             if (EveryNthByte == 0)
             {
                 MessageBox.Show("Invalid byte corruption interval.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
 
-            int AddXtoByte;
-            try
-            {
-                AddXtoByte = Convert.ToInt32(textBox_AddXToByte.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid byte addition value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            int AddXtoByte = Convert.ToInt32(textBox_AddXToByte.Text);
+            int ShiftRightXBytes = Convert.ToInt32(textBox_ShiftRightXBytes.Text);
+            byte ReplaceByteXwithYByteX = Convert.ToByte(textBox_ReplaceByteXwithYByteX.Text, 16);
+            byte  ReplaceByteXwithYByteY = Convert.ToByte(textBox_ReplaceByteXwithYByteY.Text, 16);
 
-            int ShiftRightXBytes;
-            try
-            {
-                ShiftRightXBytes = Convert.ToInt32(textBox_ShiftRightXBytes.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid right shift value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-
-            byte ReplaceByteXwithYByteX;
-            try
-            {
-                ReplaceByteXwithYByteX = Convert.ToByte(textBox_ReplaceByteXwithYByteX.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid byte to match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-
-            byte ReplaceByteXwithYByteY;
-            try
-            {
-                ReplaceByteXwithYByteY = Convert.ToByte(textBox_ReplaceByteXwithYByteY.Text, 16);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid byte replacement.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
 
             // Limit the end byte.
             if (EndByte > (ROM.LongLength - 1))
