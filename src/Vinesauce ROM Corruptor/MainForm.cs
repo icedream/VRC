@@ -28,6 +28,7 @@ using System.Threading;
 using System.Text.RegularExpressions;
 using Microsoft.VisualBasic;
 using System.Net;
+using Vinesauce_ROM_Corruptor.Components;
 
 namespace Vinesauce_ROM_Corruptor
 {
@@ -371,6 +372,7 @@ namespace Vinesauce_ROM_Corruptor
             radioButton_AddXToByte.Enabled = checkBox_ByteCorruptionEnable.Checked;
             radioButton_ShiftRightXBytes.Enabled = checkBox_ByteCorruptionEnable.Checked;
             radioButton_ReplaceByteXwithY.Enabled = checkBox_ByteCorruptionEnable.Checked;
+            radioButton_RandomizeBytes.Enabled = checkBox_ByteCorruptionEnable.Checked;
             checkBox_AutoEnd.Enabled = checkBox_ByteCorruptionEnable.Checked;
             checkBox_AutoEnd.Checked = false;
             checkBox_TextUseByteCorruptionRange.Enabled = checkBox_TextReplacementEnable.Checked && checkBox_ByteCorruptionEnable.Checked;
@@ -780,6 +782,17 @@ namespace Vinesauce_ROM_Corruptor
             button_Run.Focus();
             MessageBox.Show("When this option is selected, each byte selected for corruption is compared to the first hexadecimal value. If it matches, it is replaced by the second hexadecimal value.",
                 "Replace Byte X with Y Help");
+        }
+
+        private void button_RandomizeBytesHelp_Click(object sender, EventArgs e)
+        {
+            button_Run.Focus();
+            MessageBox.Show(
+                "When this option is selected, each byte selected for corruption has a random change performed on it." +
+                "These can be things such as XOR, OR, AND, NOT, bitwse left/right shift, etc." +
+                "These operations are also done with a randomly generated number as well, so every" +
+                "time this is run, different results are sure to happen.\n\n" +
+                "Note that this is easily the most volatile of any option and as such should be used on a smaller range of bytes");
         }
 
         private string FileSettingsToString()
@@ -1386,8 +1399,12 @@ namespace Vinesauce_ROM_Corruptor
 
             // Set byte corruption option.
             Corruption.ByteCorruptionOptions ByteCorruptionOption = Corruption.ByteCorruptionOptions.AddXToByte;
-            if (radioButton_ShiftRightXBytes.Checked) ByteCorruptionOption = Corruption.ByteCorruptionOptions.ShiftRightXBytes;
-            else if (radioButton_ReplaceByteXwithY.Checked) ByteCorruptionOption = Corruption.ByteCorruptionOptions.ReplaceByteXwithY;
+            if (radioButton_ShiftRightXBytes.Checked)
+                ByteCorruptionOption = Corruption.ByteCorruptionOptions.ShiftRightXBytes;
+            else if (radioButton_ReplaceByteXwithY.Checked)
+                ByteCorruptionOption = Corruption.ByteCorruptionOptions.ReplaceByteXwithY;
+            else if (radioButton_RandomizeBytes.Checked)
+                ByteCorruptionOption = Corruption.ByteCorruptionOptions.Randomize;
 
             // Corrupt.
             ROM = Corruption.Run(ROM, checkBox_ByteCorruptionEnable.Checked, StartByte, EndByte, ByteCorruptionOption,

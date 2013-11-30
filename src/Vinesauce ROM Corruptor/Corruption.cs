@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -31,7 +32,8 @@ namespace Vinesauce_ROM_Corruptor
         {
             AddXToByte,
             ShiftRightXBytes,
-            ReplaceByteXwithY
+            ReplaceByteXwithY,
+            Randomize,
         }
 
         static private List<byte> NESCPUJamProtection_Avoid = new List<byte> { 0x48, 0x08, 0x68, 0x28, 0x78, 0x00, 0x02, 0x12, 0x22, 0x32, 0x42, 0x52, 0x62, 0x72, 0x92, 0xB2, 0xD2, 0xF2 };
@@ -123,7 +125,7 @@ namespace Vinesauce_ROM_Corruptor
                         // If a match was found, update the dictionary.
                         if (Match)
                         {
-                            int k = 0;
+                            int k;
                             for (k = 0; k < Anchors[i].Length; k++)
                             {
                                 if (!TranslationDictionary.ContainsKey(Anchors[i][k]))
@@ -133,12 +135,12 @@ namespace Vinesauce_ROM_Corruptor
                             }
 
                             // Move ahead to the correct location in the ROM.
-                            j = j + k + 1;
+                            j += k + 1;
                         }
                         else
                         {
                             // Move ahead one byte.
-                            j = j + 1;
+                            j += 1;
                         }
                     }
                 }
@@ -288,12 +290,12 @@ namespace Vinesauce_ROM_Corruptor
                             }
 
                             // Move ahead to the correct location in the ROM.
-                            j = j + k + 1;
+                            j += k + 1;
                         }
                         else
                         {
                             // Move ahead one byte.
-                            j = j + 1;
+                            j += 1;
                         }
                     }
                 }
@@ -419,12 +421,12 @@ namespace Vinesauce_ROM_Corruptor
                         }
 
                         // Move ahead to the correct location in the ROM.
-                        j = j + 4;
+                        j += 4;
                     }
                     else
                     {
                         // Move ahead one byte.
-                        j = j + 1;
+                        j += 1;
                     }
                 }
             }
@@ -434,7 +436,7 @@ namespace Vinesauce_ROM_Corruptor
             {
                 if (ByteCorruptionOption == ByteCorruptionOptions.AddXToByte && AddXtoByte != 0)
                 {
-                    for (long i = StartByte + EveryNthByte; i <= EndByte; i = i + EveryNthByte)
+                    for (long i = StartByte + EveryNthByte; i <= EndByte; i += EveryNthByte)
                     {
                         // If the byte is protected.
                         bool Protected = false;
@@ -475,7 +477,7 @@ namespace Vinesauce_ROM_Corruptor
                 }
                 else if (ByteCorruptionOption == ByteCorruptionOptions.ShiftRightXBytes && ShiftRightXBytes != 0)
                 {
-                    for (long i = StartByte + EveryNthByte; i <= EndByte; i = i + EveryNthByte)
+                    for (long i = StartByte + EveryNthByte; i <= EndByte; i += EveryNthByte)
                     {
                         long j = i + ShiftRightXBytes;
 
@@ -520,7 +522,7 @@ namespace Vinesauce_ROM_Corruptor
                 }
                 else if (ByteCorruptionOption == ByteCorruptionOptions.ReplaceByteXwithY && ReplaceByteXwithYByteX != ReplaceByteXwithYByteY)
                 {
-                    for (long i = StartByte + EveryNthByte; i <= EndByte; i = i + EveryNthByte)
+                    for (long i = StartByte + EveryNthByte; i <= EndByte; i += EveryNthByte)
                     {
                         if (ROM[i] == ReplaceByteXwithYByteX)
                         {
@@ -543,6 +545,89 @@ namespace Vinesauce_ROM_Corruptor
                             {
                                 ROM[i] = ReplaceByteXwithYByteY;
                             }
+                        }
+                    }
+                }
+                else if (ByteCorruptionOption == ByteCorruptionOptions.Randomize)
+                {
+                    for (long i = StartByte + EveryNthByte; i <= EndByte; i += EveryNthByte)
+                    {
+                        // Check if the byte is protected.
+                        bool Protected = false;
+                        foreach (long[] ProtectedRegion in ProtectedRegions)
+                        {
+                            if (i >= ProtectedRegion[0] && i <= ProtectedRegion[1])
+                            {
+                                // Yes, its protected.
+                                Protected = true;
+                                break;
+                            }
+                        }
+
+                        // Do NES CPU jam protection if desired.
+                        if (EnableNESCPUJamProtection)
+                        {
+                            if (!Protected && i >= 2)
+                            {
+                                if (NESCPUJamProtection_Avoid.Contains((byte)((ROM[i] + AddXtoByte) % (Byte.MaxValue + 1)))
+                                    || NESCPUJamProtection_Protect_1.Contains(ROM[i])
+                                    || NESCPUJamProtection_Protect_2.Contains(ROM[i - 1])
+                                    || NESCPUJamProtection_Protect_3.Contains(ROM[i - 2]))
+                                {
+                                    Protected = true;
+                                }
+                            }
+                        }
+
+                        // If the byte is not protected, corrupt it randomly
+                        if (!Protected)
+                        {
+                            Random random = new Random((int)DateTime.Now.Ticks);
+                            int res = random.Next(1, 100);
+                            Debug.WriteLine("Original: " + ROM[i]);
+                            
+
+                            if (res >= 1 && res <= 10)
+                            {
+                                ROM[i] = (byte)(ROM[i] ^ random.Next());
+                            }
+                            else if (res >= 11 && res <= 20)
+                            {
+                                ROM[i] = (byte) (ROM[i] & random.Next());
+                            }
+                            else if (res >= 21 && res <= 30)
+                            {
+                                ROM[i] = (byte) (ROM[i] | random.Next());
+                            }
+                            else if (res >= 31 && res <= 40)
+                            {
+                                ROM[i] = (byte) (ROM[i] << random.Next());
+                            }
+                            else if (res >= 41 && res <= 50)
+                            {
+                                ROM[i] = (byte)(ROM[i] >> random.Next());
+                            }
+                            else if (res >= 51 && res <= 60)
+                            {
+                                ROM[i] = (byte)(ROM[i] + random.Next());
+                            }
+                            else if (res >= 61 && res <= 70)
+                            {
+                                ROM[i] = (byte)(ROM[i] - random.Next());
+                            }
+                            else if (res >= 71 && res <= 80)
+                            {
+                                ROM[i] = (byte)(ROM[i] * random.Next());
+                            }
+                            else if (res >= 81 && res <= 90)
+                            {
+                                ROM[i] = (byte)(ROM[i] / random.Next());
+                            }
+                            else if (res >= 91 && res <= 100)
+                            {
+                                ROM[i] = (byte)(~ROM[i]);
+                            }
+                            Debug.WriteLine("Random: " + ROM[i]);
                         }
                     }
                 }

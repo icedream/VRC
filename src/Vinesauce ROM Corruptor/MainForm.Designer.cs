@@ -18,6 +18,8 @@
  * <http://www.gnu.org/licenses/>.
  */
 
+using Vinesauce_ROM_Corruptor.Components;
+
 namespace Vinesauce_ROM_Corruptor
 {
     partial class MainForm
@@ -81,28 +83,22 @@ namespace Vinesauce_ROM_Corruptor
             this.groupBox_ByteCorruption = new System.Windows.Forms.GroupBox();
             this.button_EnableNESCPUJamProtectionHelp = new System.Windows.Forms.Button();
             this.button_ReplaceByteXwithYHelp = new System.Windows.Forms.Button();
-            this.textBox_ReplaceByteXwithYByteY = new Vinesauce_ROM_Corruptor.Components.ByteCorruptionTextBox(false);
             this.label_ReplaceByteXwithY = new System.Windows.Forms.Label();
             this.checkBox_EnableNESCPUJamProtection = new System.Windows.Forms.CheckBox();
-            this.textBox_ReplaceByteXwithYByteX = new Vinesauce_ROM_Corruptor.Components.ByteCorruptionTextBox(false);
             this.radioButton_ReplaceByteXwithY = new System.Windows.Forms.RadioButton();
             this.button_ShiftRightXBytesHelp = new System.Windows.Forms.Button();
             this.label_ShiftRightXBytes = new System.Windows.Forms.Label();
-            this.textBox_ShiftRightXBytes = new Vinesauce_ROM_Corruptor.Components.ByteCorruptionTextBox(false);
             this.radioButton_ShiftRightXBytes = new System.Windows.Forms.RadioButton();
             this.radioButton_AddXToByte = new System.Windows.Forms.RadioButton();
             this.button_AddXToByteHelp = new System.Windows.Forms.Button();
             this.label_AddXToByte = new System.Windows.Forms.Label();
-            this.textBox_AddXToByte = new Vinesauce_ROM_Corruptor.Components.ByteCorruptionTextBox(false);
             this.button_EveryNBytesHelp = new System.Windows.Forms.Button();
             this.label_EveryNBytes2 = new System.Windows.Forms.Label();
-            this.textBox_EveryNBytes = new Vinesauce_ROM_Corruptor.Components.ByteCorruptionTextBox(false);
             this.label_EveryNBytes1 = new System.Windows.Forms.Label();
             this.button_AutoEndHelp = new System.Windows.Forms.Button();
             this.checkBox_AutoEnd = new System.Windows.Forms.CheckBox();
             this.button_RangeHelp = new System.Windows.Forms.Button();
             this.button_IncrementHelp = new System.Windows.Forms.Button();
-            this.textBox_Increment = new Vinesauce_ROM_Corruptor.Components.ByteCorruptionTextBox(false);
             this.label_Increment = new System.Windows.Forms.Label();
             this.button_RangeDown = new System.Windows.Forms.Button();
             this.button_RangeUp = new System.Windows.Forms.Button();
@@ -110,9 +106,7 @@ namespace Vinesauce_ROM_Corruptor
             this.button_EndByteDown = new System.Windows.Forms.Button();
             this.button_StartByteUp = new System.Windows.Forms.Button();
             this.button_EndByteUp = new System.Windows.Forms.Button();
-            this.textBox_EndByte = new Vinesauce_ROM_Corruptor.Components.ByteCorruptionTextBox(true);
             this.label_EndByte = new System.Windows.Forms.Label();
-            this.textBox_StartByte = new Vinesauce_ROM_Corruptor.Components.ByteCorruptionTextBox(true);
             this.label_StartByte = new System.Windows.Forms.Label();
             this.checkBox_ByteCorruptionEnable = new System.Windows.Forms.CheckBox();
             this.groupBox_ColorReplacement = new System.Windows.Forms.GroupBox();
@@ -137,11 +131,21 @@ namespace Vinesauce_ROM_Corruptor
             this.button_HotkeySet = new System.Windows.Forms.Button();
             this.button_HotkeyHelp = new System.Windows.Forms.Button();
             this.groupBox_Queue = new System.Windows.Forms.GroupBox();
+            this.button_QueueAddFromFile = new System.Windows.Forms.Button();
             this.button_QueueHelp = new System.Windows.Forms.Button();
             this.checkBox_QueueEnable = new System.Windows.Forms.CheckBox();
             this.button_QueueManage = new System.Windows.Forms.Button();
             this.button_QueueAdd = new System.Windows.Forms.Button();
-            this.button_QueueAddFromFile = new System.Windows.Forms.Button();
+            this.radioButton_RandomizeBytes = new System.Windows.Forms.RadioButton();
+            this.button_RandomizeBytesHelp = new System.Windows.Forms.Button();
+            this.textBox_ReplaceByteXwithYByteX = new ByteCorruptionTextBox(false);
+            this.textBox_ReplaceByteXwithYByteY = new ByteCorruptionTextBox(false);
+            this.textBox_ShiftRightXBytes = new ByteCorruptionTextBox(false);
+            this.textBox_AddXToByte = new ByteCorruptionTextBox(false);
+            this.textBox_EveryNBytes = new ByteCorruptionTextBox(false);
+            this.textBox_Increment = new ByteCorruptionTextBox(true);
+            this.textBox_StartByte = new ByteCorruptionTextBox(true);
+            this.textBox_EndByte = new ByteCorruptionTextBox(true);
             this.groupBox_FileSelection.SuspendLayout();
             this.groupBox_EmulatorSelection.SuspendLayout();
             this.groupBox_TextReplace.SuspendLayout();
@@ -337,7 +341,7 @@ namespace Vinesauce_ROM_Corruptor
             this.groupBox_TextReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_TextReplace.Location = new System.Drawing.Point(10, 413);
             this.groupBox_TextReplace.Name = "groupBox_TextReplace";
-            this.groupBox_TextReplace.Size = new System.Drawing.Size(359, 162);
+            this.groupBox_TextReplace.Size = new System.Drawing.Size(359, 182);
             this.groupBox_TextReplace.TabIndex = 9;
             this.groupBox_TextReplace.TabStop = false;
             this.groupBox_TextReplace.Text = "Text Replacement";
@@ -469,7 +473,7 @@ namespace Vinesauce_ROM_Corruptor
             // button_Run
             // 
             this.button_Run.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Run.Location = new System.Drawing.Point(10, 757);
+            this.button_Run.Location = new System.Drawing.Point(10, 777);
             this.button_Run.Name = "button_Run";
             this.button_Run.Size = new System.Drawing.Size(55, 28);
             this.button_Run.TabIndex = 10;
@@ -479,6 +483,8 @@ namespace Vinesauce_ROM_Corruptor
             // 
             // groupBox_ByteCorruption
             // 
+            this.groupBox_ByteCorruption.Controls.Add(this.button_RandomizeBytesHelp);
+            this.groupBox_ByteCorruption.Controls.Add(this.radioButton_RandomizeBytes);
             this.groupBox_ByteCorruption.Controls.Add(this.button_EnableNESCPUJamProtectionHelp);
             this.groupBox_ByteCorruption.Controls.Add(this.button_ReplaceByteXwithYHelp);
             this.groupBox_ByteCorruption.Controls.Add(this.textBox_ReplaceByteXwithYByteY);
@@ -518,7 +524,7 @@ namespace Vinesauce_ROM_Corruptor
             this.groupBox_ByteCorruption.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_ByteCorruption.Location = new System.Drawing.Point(376, 323);
             this.groupBox_ByteCorruption.Name = "groupBox_ByteCorruption";
-            this.groupBox_ByteCorruption.Size = new System.Drawing.Size(358, 251);
+            this.groupBox_ByteCorruption.Size = new System.Drawing.Size(358, 272);
             this.groupBox_ByteCorruption.TabIndex = 11;
             this.groupBox_ByteCorruption.TabStop = false;
             this.groupBox_ByteCorruption.Text = "Byte Corruption";
@@ -526,7 +532,7 @@ namespace Vinesauce_ROM_Corruptor
             // button_EnableNESCPUJamProtectionHelp
             // 
             this.button_EnableNESCPUJamProtectionHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_EnableNESCPUJamProtectionHelp.Location = new System.Drawing.Point(220, 221);
+            this.button_EnableNESCPUJamProtectionHelp.Location = new System.Drawing.Point(220, 243);
             this.button_EnableNESCPUJamProtectionHelp.Name = "button_EnableNESCPUJamProtectionHelp";
             this.button_EnableNESCPUJamProtectionHelp.Size = new System.Drawing.Size(26, 23);
             this.button_EnableNESCPUJamProtectionHelp.TabIndex = 43;
@@ -571,7 +577,7 @@ namespace Vinesauce_ROM_Corruptor
             this.checkBox_EnableNESCPUJamProtection.AutoSize = true;
             this.checkBox_EnableNESCPUJamProtection.Enabled = false;
             this.checkBox_EnableNESCPUJamProtection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_EnableNESCPUJamProtection.Location = new System.Drawing.Point(6, 225);
+            this.checkBox_EnableNESCPUJamProtection.Location = new System.Drawing.Point(8, 247);
             this.checkBox_EnableNESCPUJamProtection.Name = "checkBox_EnableNESCPUJamProtection";
             this.checkBox_EnableNESCPUJamProtection.Size = new System.Drawing.Size(211, 17);
             this.checkBox_EnableNESCPUJamProtection.TabIndex = 40;
@@ -935,7 +941,7 @@ namespace Vinesauce_ROM_Corruptor
             this.groupBox_ColorReplacement.Controls.Add(this.label_ColorsToReplace);
             this.groupBox_ColorReplacement.Controls.Add(this.checkBox_ColorReplacementEnable);
             this.groupBox_ColorReplacement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_ColorReplacement.Location = new System.Drawing.Point(10, 580);
+            this.groupBox_ColorReplacement.Location = new System.Drawing.Point(10, 600);
             this.groupBox_ColorReplacement.Name = "groupBox_ColorReplacement";
             this.groupBox_ColorReplacement.Size = new System.Drawing.Size(359, 172);
             this.groupBox_ColorReplacement.TabIndex = 16;
@@ -1039,7 +1045,7 @@ namespace Vinesauce_ROM_Corruptor
             // 
             this.groupBox_NESPalette.Controls.Add(this.pictureBox_NESPalette);
             this.groupBox_NESPalette.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_NESPalette.Location = new System.Drawing.Point(376, 580);
+            this.groupBox_NESPalette.Location = new System.Drawing.Point(376, 600);
             this.groupBox_NESPalette.Name = "groupBox_NESPalette";
             this.groupBox_NESPalette.Size = new System.Drawing.Size(358, 171);
             this.groupBox_NESPalette.TabIndex = 35;
@@ -1061,7 +1067,7 @@ namespace Vinesauce_ROM_Corruptor
             // button_NESPaletteHelp
             // 
             this.button_NESPaletteHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_NESPaletteHelp.Location = new System.Drawing.Point(702, 761);
+            this.button_NESPaletteHelp.Location = new System.Drawing.Point(702, 781);
             this.button_NESPaletteHelp.Name = "button_NESPaletteHelp";
             this.button_NESPaletteHelp.Size = new System.Drawing.Size(26, 23);
             this.button_NESPaletteHelp.TabIndex = 16;
@@ -1072,7 +1078,7 @@ namespace Vinesauce_ROM_Corruptor
             // button_Save
             // 
             this.button_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Save.Location = new System.Drawing.Point(70, 757);
+            this.button_Save.Location = new System.Drawing.Point(70, 777);
             this.button_Save.Name = "button_Save";
             this.button_Save.Size = new System.Drawing.Size(69, 28);
             this.button_Save.TabIndex = 37;
@@ -1083,7 +1089,7 @@ namespace Vinesauce_ROM_Corruptor
             // button_Load
             // 
             this.button_Load.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Load.Location = new System.Drawing.Point(146, 757);
+            this.button_Load.Location = new System.Drawing.Point(146, 777);
             this.button_Load.Name = "button_Load";
             this.button_Load.Size = new System.Drawing.Size(69, 28);
             this.button_Load.TabIndex = 38;
@@ -1107,7 +1113,7 @@ namespace Vinesauce_ROM_Corruptor
             // 
             this.checkBox_UseTinyURL.AutoSize = true;
             this.checkBox_UseTinyURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_UseTinyURL.Location = new System.Drawing.Point(220, 765);
+            this.checkBox_UseTinyURL.Location = new System.Drawing.Point(220, 785);
             this.checkBox_UseTinyURL.Name = "checkBox_UseTinyURL";
             this.checkBox_UseTinyURL.Size = new System.Drawing.Size(101, 17);
             this.checkBox_UseTinyURL.TabIndex = 41;
@@ -1117,7 +1123,7 @@ namespace Vinesauce_ROM_Corruptor
             // button_UseTinyURLHelp
             // 
             this.button_UseTinyURLHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_UseTinyURLHelp.Location = new System.Drawing.Point(328, 761);
+            this.button_UseTinyURLHelp.Location = new System.Drawing.Point(328, 781);
             this.button_UseTinyURLHelp.Name = "button_UseTinyURLHelp";
             this.button_UseTinyURLHelp.Size = new System.Drawing.Size(26, 23);
             this.button_UseTinyURLHelp.TabIndex = 42;
@@ -1129,7 +1135,7 @@ namespace Vinesauce_ROM_Corruptor
             // 
             this.checkBox_HotkeyEnable.AutoSize = true;
             this.checkBox_HotkeyEnable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_HotkeyEnable.Location = new System.Drawing.Point(361, 765);
+            this.checkBox_HotkeyEnable.Location = new System.Drawing.Point(361, 785);
             this.checkBox_HotkeyEnable.Name = "checkBox_HotkeyEnable";
             this.checkBox_HotkeyEnable.Size = new System.Drawing.Size(109, 17);
             this.checkBox_HotkeyEnable.TabIndex = 43;
@@ -1141,7 +1147,7 @@ namespace Vinesauce_ROM_Corruptor
             // 
             this.button_HotkeySet.Enabled = false;
             this.button_HotkeySet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_HotkeySet.Location = new System.Drawing.Point(471, 762);
+            this.button_HotkeySet.Location = new System.Drawing.Point(471, 782);
             this.button_HotkeySet.Name = "button_HotkeySet";
             this.button_HotkeySet.Size = new System.Drawing.Size(26, 23);
             this.button_HotkeySet.TabIndex = 44;
@@ -1152,7 +1158,7 @@ namespace Vinesauce_ROM_Corruptor
             // button_HotkeyHelp
             // 
             this.button_HotkeyHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_HotkeyHelp.Location = new System.Drawing.Point(502, 762);
+            this.button_HotkeyHelp.Location = new System.Drawing.Point(502, 782);
             this.button_HotkeyHelp.Name = "button_HotkeyHelp";
             this.button_HotkeyHelp.Size = new System.Drawing.Size(26, 23);
             this.button_HotkeyHelp.TabIndex = 45;
@@ -1174,6 +1180,17 @@ namespace Vinesauce_ROM_Corruptor
             this.groupBox_Queue.TabIndex = 46;
             this.groupBox_Queue.TabStop = false;
             this.groupBox_Queue.Text = "Queue";
+            // 
+            // button_QueueAddFromFile
+            // 
+            this.button_QueueAddFromFile.Enabled = false;
+            this.button_QueueAddFromFile.Location = new System.Drawing.Point(117, 16);
+            this.button_QueueAddFromFile.Name = "button_QueueAddFromFile";
+            this.button_QueueAddFromFile.Size = new System.Drawing.Size(89, 23);
+            this.button_QueueAddFromFile.TabIndex = 46;
+            this.button_QueueAddFromFile.Text = "Add from File";
+            this.button_QueueAddFromFile.UseVisualStyleBackColor = true;
+            this.button_QueueAddFromFile.Click += new System.EventHandler(this.button_QueueAddFromFile_Click);
             // 
             // button_QueueHelp
             // 
@@ -1219,23 +1236,35 @@ namespace Vinesauce_ROM_Corruptor
             this.button_QueueAdd.UseVisualStyleBackColor = true;
             this.button_QueueAdd.Click += new System.EventHandler(this.button_QueueAdd_Click);
             // 
-            // button_QueueAddFromFile
+            // radioButton_RandomizeBytes
             // 
-            this.button_QueueAddFromFile.Enabled = false;
-            this.button_QueueAddFromFile.Location = new System.Drawing.Point(117, 16);
-            this.button_QueueAddFromFile.Name = "button_QueueAddFromFile";
-            this.button_QueueAddFromFile.Size = new System.Drawing.Size(89, 23);
-            this.button_QueueAddFromFile.TabIndex = 46;
-            this.button_QueueAddFromFile.Text = "Add from File";
-            this.button_QueueAddFromFile.UseVisualStyleBackColor = true;
-            this.button_QueueAddFromFile.Click += new System.EventHandler(this.button_QueueAddFromFile_Click);
+            this.radioButton_RandomizeBytes.AutoSize = true;
+            this.radioButton_RandomizeBytes.Enabled = false;
+            this.radioButton_RandomizeBytes.Location = new System.Drawing.Point(8, 222);
+            this.radioButton_RandomizeBytes.Name = "radioButton_RandomizeBytes";
+            this.radioButton_RandomizeBytes.Size = new System.Drawing.Size(122, 17);
+            this.radioButton_RandomizeBytes.TabIndex = 45;
+            this.radioButton_RandomizeBytes.TabStop = true;
+            this.radioButton_RandomizeBytes.Text = "Randomize Bytes";
+            this.radioButton_RandomizeBytes.UseVisualStyleBackColor = true;
+            // 
+            // button_RandomizeBytesHelp
+            // 
+            this.button_RandomizeBytesHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_RandomizeBytesHelp.Location = new System.Drawing.Point(134, 219);
+            this.button_RandomizeBytesHelp.Name = "button_RandomizeBytesHelp";
+            this.button_RandomizeBytesHelp.Size = new System.Drawing.Size(26, 23);
+            this.button_RandomizeBytesHelp.TabIndex = 46;
+            this.button_RandomizeBytesHelp.Text = "?";
+            this.button_RandomizeBytesHelp.UseVisualStyleBackColor = true;
+            this.button_RandomizeBytesHelp.Click += button_RandomizeBytesHelp_Click;
             // 
             // MainForm
             // 
             this.AcceptButton = this.button_Run;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 791);
+            this.ClientSize = new System.Drawing.Size(742, 817);
             this.Controls.Add(this.groupBox_Queue);
             this.Controls.Add(this.button_HotkeyHelp);
             this.Controls.Add(this.button_HotkeySet);
@@ -1306,10 +1335,8 @@ namespace Vinesauce_ROM_Corruptor
         private System.Windows.Forms.CheckBox checkBox_TextReplacementEnable;
         public System.Windows.Forms.Button button_Run;
         private System.Windows.Forms.GroupBox groupBox_ByteCorruption;
-        private System.Windows.Forms.TextBox textBox_StartByte;
         private System.Windows.Forms.Label label_StartByte;
         private System.Windows.Forms.CheckBox checkBox_ByteCorruptionEnable;
-        private System.Windows.Forms.TextBox textBox_EndByte;
         private System.Windows.Forms.Label label_EndByte;
         public System.Windows.Forms.Button button_RangeDown;
         public System.Windows.Forms.Button button_RangeUp;
@@ -1319,17 +1346,14 @@ namespace Vinesauce_ROM_Corruptor
         public System.Windows.Forms.Button button_EndByteUp;
         private System.Windows.Forms.Button button_RangeHelp;
         private System.Windows.Forms.Button button_IncrementHelp;
-        private System.Windows.Forms.TextBox textBox_Increment;
         private System.Windows.Forms.Label label_Increment;
         private System.Windows.Forms.Button button_AutoEndHelp;
         private System.Windows.Forms.CheckBox checkBox_AutoEnd;
         private System.Windows.Forms.Button button_EveryNBytesHelp;
         private System.Windows.Forms.Label label_EveryNBytes2;
-        private System.Windows.Forms.TextBox textBox_EveryNBytes;
         private System.Windows.Forms.Label label_EveryNBytes1;
         private System.Windows.Forms.Button button_AddXToByteHelp;
         private System.Windows.Forms.Label label_AddXToByte;
-        private System.Windows.Forms.TextBox textBox_AddXToByte;
         private System.Windows.Forms.GroupBox groupBox_ColorReplacement;
         private System.Windows.Forms.Button button_ReplaceWithColorsHelp;
         private System.Windows.Forms.TextBox textBox_ReplaceWithColors;
@@ -1349,13 +1373,10 @@ namespace Vinesauce_ROM_Corruptor
         private System.Windows.Forms.Button button_Load;
         private System.Windows.Forms.Button button_ShiftRightXBytesHelp;
         private System.Windows.Forms.Label label_ShiftRightXBytes;
-        private System.Windows.Forms.TextBox textBox_ShiftRightXBytes;
         private System.Windows.Forms.RadioButton radioButton_ShiftRightXBytes;
         private System.Windows.Forms.RadioButton radioButton_AddXToByte;
         private System.Windows.Forms.Button button_ReplaceByteXwithYHelp;
-        private System.Windows.Forms.TextBox textBox_ReplaceByteXwithYByteY;
         private System.Windows.Forms.Label label_ReplaceByteXwithY;
-        private System.Windows.Forms.TextBox textBox_ReplaceByteXwithYByteX;
         private System.Windows.Forms.RadioButton radioButton_ReplaceByteXwithY;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox checkBox_EnableNESCPUJamProtection;
@@ -1373,6 +1394,16 @@ namespace Vinesauce_ROM_Corruptor
         private System.Windows.Forms.Button button_QueueManage;
         private System.Windows.Forms.Button button_QueueAdd;
         private System.Windows.Forms.Button button_QueueAddFromFile;
+        private System.Windows.Forms.RadioButton radioButton_RandomizeBytes;
+        private Components.ByteCorruptionTextBox textBox_StartByte;
+        private Components.ByteCorruptionTextBox textBox_EndByte;
+        private Components.ByteCorruptionTextBox textBox_Increment;
+        private Components.ByteCorruptionTextBox textBox_EveryNBytes;
+        private Components.ByteCorruptionTextBox textBox_AddXToByte;
+        private Components.ByteCorruptionTextBox textBox_ShiftRightXBytes;
+        private Components.ByteCorruptionTextBox textBox_ReplaceByteXwithYByteY;
+        private Components.ByteCorruptionTextBox textBox_ReplaceByteXwithYByteX;
+        private System.Windows.Forms.Button button_RandomizeBytesHelp;
     }
 }
 
