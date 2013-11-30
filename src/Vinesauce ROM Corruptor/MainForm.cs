@@ -776,7 +776,7 @@ namespace Vinesauce_ROM_Corruptor
             if (checkBox_UseTinyURL.Checked)
             {
                 // Get the name of the paste from user.
-                string name = Interaction.InputBox("Please enter a brief description of these corruption settings below.", "Save to TinyURL", "");
+                string name = Interaction.InputBox("Please enter a brief description of these corruption settings below.", "Save to TinyURL");
                 if (name == "")
                 {
                     MessageBox.Show("No description entered, save to TinyURL aborted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -879,7 +879,7 @@ namespace Vinesauce_ROM_Corruptor
             if (checkBox_UseTinyURL.Checked)
             {
                 // Get the TinyURL from the user.
-                string url = Interaction.InputBox("Please enter the TinyURL to load below.", "Load from TinyURL", "");
+                string url = Interaction.InputBox("Please enter the TinyURL to load below.", "Load from TinyURL");
                 if (url == "")
                 {
                     MessageBox.Show("No TinyURL entered, load from TinyURL aborted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1521,7 +1521,7 @@ namespace Vinesauce_ROM_Corruptor
         private void button_QueueAdd_Click(object sender, EventArgs e)
         {
             // Get an identifier of the corruption settings from the user.
-            string name = Interaction.InputBox("Please enter a brief description of these corruption settings below.", "Add to Queue", "");
+            string name = Interaction.InputBox("Please enter a brief description of these corruption settings below.", "Add to Queue");
             if (name == "")
             {
                 MessageBox.Show("No description entered, addition to queue aborted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
