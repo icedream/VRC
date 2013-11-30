@@ -44,6 +44,9 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\ByteCorruptionTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Corruption.cs" />
     <Compile Include="HotkeyForm.cs">
       <SubType>Form</SubType>
