@@ -232,11 +232,8 @@ namespace Vinesauce_ROM_Corruptor
             // Check that we can write to the file.
             if (File.Exists(textBox_SaveLocation.Text) && !checkBox_Overwrite.Checked)
             {
-                if (!checkBox_Overwrite.Checked)
-                {
-                    MessageBox.Show("File to save to exists and overwrite is not enabled.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                MessageBox.Show("File to save to exists and overwrite is not enabled.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // Check that a ROM is selected.
@@ -425,7 +422,7 @@ namespace Vinesauce_ROM_Corruptor
                 if (StartByte > MaxByte)
                 {
                     StartByte = MaxByte;
-                    textBox_StartByte.Text = MaxByte.ToString("X");
+                    textBox_StartByte.Text = StartByte.ToString("X");
                 }
                 textBox_EndByte.Text = MaxByte.ToString("X");
             }
@@ -783,7 +780,7 @@ namespace Vinesauce_ROM_Corruptor
                     return;
                 }
 
-                string response = "";
+                string response;
                 try
                 {
                     // Create a TinyURL.
