@@ -788,11 +788,11 @@ namespace Vinesauce_ROM_Corruptor
         {
             button_Run.Focus();
             MessageBox.Show(
-                "When this option is selected, each byte selected for corruption has a random change performed on it." +
-                "These can be things such as XOR, OR, AND, NOT, bitwse left/right shift, etc." +
+                "When this option is selected, each byte selected for corruption has a random change performed on it. " +
+                "These can be things such as XOR, OR, AND, NOT, bitwse left/right shift, etc. " +
                 "These operations are also done with a randomly generated number as well, so every" +
                 "time this is run, different results are sure to happen.\n\n" +
-                "Note that this is easily the most volatile of any option and as such should be used on a smaller range of bytes");
+                "Note that this is easily the most volatile of any byte corruption option.");
         }
 
         private string FileSettingsToString()
