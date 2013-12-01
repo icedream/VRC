@@ -582,7 +582,7 @@ namespace Vinesauce_ROM_Corruptor
                         if (!Protected)
                         {
                             Random random = new Random((int)DateTime.Now.Ticks);
-                            int res = random.Next(1, 100);
+                            int res = random.Next(1, 210);
 
                             if (res >= 1 && res <= 10)
                             {
@@ -623,6 +623,49 @@ namespace Vinesauce_ROM_Corruptor
                             else if (res >= 91 && res <= 100)
                             {
                                 ROM[i] = (byte)(~ROM[i]);
+                            }
+                            else if (res >= 101 && res <= 110)
+                            {
+                                ROM[i] += ROM[i];
+                            }
+                            else if (res >= 111 && res <= 120)
+                            {
+                                ROM[i] -= ROM[i];
+                            }
+                            else if (res >= 121 && res <= 130)
+                            {
+                                ROM[i] *= ROM[i];
+                            }
+                            else if (res >= 131 && res <= 140)
+                            {
+                                if (ROM[i] == 0)
+                                    ROM[i] = (byte) random.Next(1, 255);
+
+                                ROM[i] /= ROM[i];
+                            }
+                            else if (res >= 141 && res <= 150)
+                            {
+                                ROM[i] |= ROM[i];
+                            }
+                            else if (res >= 151 && res <= 160)
+                            {
+                                ROM[i] &= ROM[i];
+                            }
+                            else if (res >= 171 && res <= 180)
+                            {
+                                ROM[i] ^= ROM[i];
+                            }
+                            else if (res >= 181 && res <= 190)
+                            {
+                                ROM[i] >>= ROM[i];
+                            }
+                            else if (res >= 191 && res <= 200)
+                            {
+                                ROM[i] <<= ROM[i];
+                            }
+                            else if (res >= 201 && res <= 210)
+                            {
+                                ROM[i] %= (byte) random.Next();
                             }
                         }
                     }
