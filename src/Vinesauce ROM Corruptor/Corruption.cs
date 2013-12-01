@@ -665,7 +665,7 @@ namespace Vinesauce_ROM_Corruptor
                             }
                             else if (res >= 201 && res <= 210)
                             {
-                                ROM[i] %= (byte) random.Next();
+                                ROM[i] %= (byte) random.Next(1, int.MaxValue);
                             }
                         }
                     }
